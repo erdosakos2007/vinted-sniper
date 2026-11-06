@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#182218"/>
+      <stop offset="0.55" stop-color="#101611"/>
+      <stop offset="1" stop-color="#080b09"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c4ff4d"/>
+      <stop offset="1" stop-color="#86d91d"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#9fe83c" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#9fe83c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="460" rx="30" fill="url(#bg)"/>
+  <circle cx="1020" cy="85" r="330" fill="url(#glow)"/>
+  <circle cx="1030" cy="250" r="176" fill="none" stroke="#b5fa4b" stroke-opacity=".12" stroke-width="2"/>
+  <circle cx="1030" cy="250" r="132" fill="none" stroke="#b5fa4b" stroke-opacity=".1" stroke-width="2"/>
+  <path d="M0 376 C260 300 420 500 700 390 S1010 340 1200 385" fill="none" stroke="#b5fa4b" stroke-opacity=".1" stroke-width="2"/>
+  <rect x="74" y="92" width="180" height="180" rx="48" fill="url(#lime)"/>
+  <text x="164" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="-7" fill="#10150d">VS</text>
+  <text x="302" y="169" font-family="Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="5" fill="#f5f8f2">VINTED</text>
+  <text x="570" y="169" font-family="Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="5" fill="#b5f044">SNIPER</text>
+  <text x="306" y="224" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="6" fill="#aab7a4">SMART FINDS. BETTER DEALS.</text>
+  <rect x="306" y="273" width="102" height="5" rx="3" fill="url(#lime)"/>
+  <text x="306" y="327" font-family="Arial, sans-serif" font-size="23" font-weight="500" letter-spacing="1.2" fill="#d8e0d4">LIVE WEBSITE ACTIVITY</text>
+  <path d="M1070 146l10 19 21 3-15 15 4 22-20-10-20 10 4-22-16-15 22-3z" fill="#b5f044" fill-opacity=".9"/>
+  <circle cx="1107" cy="329" r="7" fill="#b5f044"/>
+  <circle cx="1107" cy="329" r="18" fill="none" stroke="#b5f044" stroke-opacity=".25" stroke-width="2"/>
+</svg>

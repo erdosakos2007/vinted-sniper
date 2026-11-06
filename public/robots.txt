@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vinted-sniper-6xb.pages.dev/sitemap.xml

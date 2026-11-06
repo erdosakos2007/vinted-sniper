@@ -1,0 +1,17 @@
+[Script Info]
+Title: AI Presenter Intro
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1080
+PlayResY: 1920
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Main,Arial,50,&H00FFFFFF,&H000000FF,&H00101410,&HAA081008,-1,0,0,0,100,100,0,0,3,6,1,2,100,100,210,1
+Style: Title,Arial,48,&H003CF04B,&H000000FF,&H00101410,&HAA081008,-1,0,0,0,100,100,0,0,3,8,1,8,80,80,130,1
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.00,0:00:12.95,Title,,0,0,0,,VINTED SNIPER
+Dialogue: 1,0:00:00.00,0:00:03.70,Main,,0,0,0,,Szia! Ez itt a Vinted Sniper.
+Dialogue: 1,0:00:03.70,0:00:08.80,Main,,0,0,0,,Gyorsan megtalálhatod az új ajánlatokat,\nelmentheted a kedvenceidet,
+Dialogue: 1,0:00:08.80,0:00:12.95,Main,,0,0,0,,és követheted az árcsökkenéseket.\nMutatom, hogyan működik!

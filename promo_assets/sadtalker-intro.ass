@@ -1,0 +1,16 @@
+[Script Info]
+Title: AI Host Intro
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1080
+PlayResY: 1920
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Cap,Arial,54,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,3,7,2,2,95,95,220,1
+Style: Head,Arial,50,&H003CF04B,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,3,8,1,8,80,80,145,1
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.00,0:00:04.20,Head,,0,0,0,,VINTED SNIPER
+Dialogue: 1,0:00:00.00,0:00:02.30,Cap,,0,0,0,,Are you a Vinted seller or buyer?
+Dialogue: 1,0:00:02.30,0:00:04.20,Cap,,0,0,0,,You NEED to see this!

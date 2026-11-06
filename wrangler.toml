@@ -1,0 +1,9 @@
+name = "vinted-sniper"
+pages_build_output_dir = "./out"
+compatibility_date = "2026-11-04"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dowex-vinted-db"
+database_id = "a6cba9de-693e-4edb-9561-848f5abfd991"
+migrations_dir = "migrations"

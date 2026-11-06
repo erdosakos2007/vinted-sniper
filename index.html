@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VintedSniper - Real-time Deal Finder</title>
+    <!-- Tailwind CSS a gyors és szép dizájnért -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen font-sans">
+    
+    <!-- Navbar -->
+    <header class="border-b border-zinc-800 bg-zinc-900/50 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-wider text-emerald-400">VINTED<span class="text-white">SNIPER</span></span>
+                <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">LIVE</span>
+            </div>
+            <div id="tier-buttons" class="flex space-x-2">
+                <button onclick="switchTier('free')" id="btn-free" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-emerald-600 text-white transition">Free</button>
+                <button onclick="switchTier('plus')" id="btn-plus" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition">Plus</button>
+                <button onclick="switchTier('premium')" id="btn-premium" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition">Premium</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="mb-6 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Legfrissebb Prémium Ajánlatok</h1>
+            <span id="item-count" class="text-sm text-zinc-400">Betöltés...</span>
+        </div>
+
+        <!-- Deals Grid -->
+        <div id="deals-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Ide töltődnek be a termékek dinamikusan -->
+        </div>
+
+        <!-- Üres állapot jelző -->
+        <div id="empty-state" class="hidden text-center py-20 text-zinc-500">
+            <p class="text-lg">Még nincsenek találatok az adatbázisban.</p>
+            <p class="text-sm mt-1">A scraper hamarosan megkezdi az adatok gyűjtését.</p>
+        </div>
+    </main>
+
+    <script>
+        let currentTier = 'free';
+
+        async function fetchDeals(tier) {
+            currentTier = tier;
+            
+            // Gombok stílusának frissítése
+            ['free', 'plus', 'premium'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === tier) {
+                    btn.className = "px-3 py-1.5 text-sm font-medium rounded-lg bg-emerald-600 text-white transition";
+                } else {
+                    btn.className = "px-3 py-1.5 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition";
+                }
+            });
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/deals?tier=${tier}`);
+                const data = await response.json();
+                
+                document.getElementById('item-count').innerText = `${data.count} találat`;
+                
+                const grid = document.getElementById('deals-grid');
+                const emptyState = document.getElementById('empty-state');
+                grid.innerHTML = '';
+
+                if (data.items.length === 0) {
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+
+                emptyState.classList.add('hidden');
+
+                data.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-700 transition flex flex-col";
+                    card.innerHTML = `
+                        <div class="h-48 bg-zinc-800 relative overflow-hidden">
+                            <img src="${item.image_url || 'https://via.placeholder.com/300'}" alt="${item.title}" class="w-full h-full object-cover">
+                            <span class="absolute top-2 right-2 bg-zinc-950/80 backdrop-blur text-xs px-2 py-1 rounded font-semibold text-emerald-400">${item.brand}</span>
+                        </div>
+                        <div class="p-4 flex flex-col flex-grow justify-between">
+                            <div>
+                                <h3 class="font-medium text-sm text-zinc-200 line-clamp-2 mb-2">${item.title}</h3>
+                                <div class="text-lg font-bold text-white mb-4">${item.price.toLocaleString()} HUF</div>
+                            </div>
+                            <a href="${item.url}" target="_blank" class="block w-full text-center bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-2 rounded-lg text-sm transition">
+                                Megtekintés Vinteden
+                            </a>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error("Hiba az adatok lekérésekor:", error);
+                document.getElementById('item-count').innerText = "Hiba a szerver elérésénél";
+            }
+        }
+
+        // Oldal betöltésekor lekérjük a free tier adatait
+        fetchDeals('free');
+        
+        // 10 másodpercenkénti auto-frissítés
+        setInterval(() => fetchDeals(currentTier), 10000);
+    </script>
+</body>
+</html>

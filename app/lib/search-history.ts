@@ -1,0 +1,4 @@
+export type RecentVintedSearch={query:string;category:string;url:string;openedAt:number};
+const KEY="vs-recent-vinted-searches-v1";
+export function recordVintedSearch(query:string,category:string,url:string){try{const clean=query.trim();if(!clean)return;const existing=JSON.parse(localStorage.getItem(KEY)||"[]") as RecentVintedSearch[];const next=[{query:clean,category,url,openedAt:Date.now()},...existing.filter(item=>item.query.toLocaleLowerCase()!==clean.toLocaleLowerCase()||item.category!==category)].slice(0,30);localStorage.setItem(KEY,JSON.stringify(next));window.dispatchEvent(new Event("vs-search-history-change"))}catch{}}
+export function getRecentVintedSearches():RecentVintedSearch[]{try{const value=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(value)?value.filter(item=>item&&typeof item.query==="string"&&typeof item.url==="string"):[]}catch{return []}}

@@ -1,0 +1,11 @@
+name = "vinted-sniper-deal-sync"
+main = "worker.js"
+compatibility_date = "2026-11-04"
+
+[triggers]
+crons = ["* * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dowex-vinted-db"
+database_id = "a6cba9de-693e-4edb-9561-848f5abfd991"
