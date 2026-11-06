@@ -18,6 +18,7 @@ app.add_middleware(
 )
 
 # --- A TE SUPABASE ADATBÁZIS LINKED --
+DATABASE_URL = os.environ["postgresql://postgres.chbgqnurbbzcltfykztl:Akoska10...@aws-1-eu-central-1.pooler.supabase.com:5432/postgres"]
 
 # 24 Prémium márka
 TARGET_BRANDS = [
